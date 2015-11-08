@@ -1,0 +1,54 @@
+/*
+ * Ejercicio1.c
+ *
+ *  Created on: 31 de oct. de 2015
+ *      Author: holdsnake
+ */
+#include <stdio.h>
+
+
+int funcionRecursivaNoFinal(int n);
+int funcionIterativa(int n);
+
+int main()
+{
+	int n = 8;
+	int res = 44;
+	printf("Resultado del Algoritmo Recursivo No final de %d : %d\n",n,funcionRecursivaNoFinal(n));
+	printf("Resultado del Algoritmo Iterativo de %d : %d\n",n,funcionIterativa(n));
+	printf("Resultado esperado: %d",res);
+	return 0;
+}
+int funcionRecursivaNoFinal(int n){
+	if(n==0){
+		return 4;
+	}else if(n==1){
+		return 3;
+	}else if(n==2){
+		return 2;
+	}else if(n==3){
+		return 1;
+	}else if(n<0){
+		return 0;
+	}
+
+	return 2*funcionRecursivaNoFinal(n-2)+funcionRecursivaNoFinal(n-4);
+}
+
+int funcionIterativa(int n){
+	int i=0;
+	int a=4;
+	int b=3;
+	int c=2;
+	int d=1;
+	int d0;
+	while(i<n){
+		i=i+1;
+		d0=(2*c)+a;
+		a=b;
+		b=c;
+		c=d;
+		d=d0;
+	}
+	return a;
+}

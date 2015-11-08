@@ -1,0 +1,65 @@
+/*
+ * Eje3.c
+ *
+ *  Created on: 3 de nov. de 2015
+ *      Author: practica
+ */
+
+#include <stdio.h>
+
+float f_aureo(int n);
+float f_aureof(int n, float acum);
+float f_aureoIt(int n);
+
+int main(int argc, char** argv) {
+	int valornofinal;
+	int valorfinal;
+	int valoriterativo;
+
+	printf("Introduzca el valor para la funcion recursiva no final");
+	scanf("%d",&valornofinal);
+	printf("Resultado del no final: %f\n", f_aureo(valornofinal));
+
+	printf("Introduzca el valor para la funcion recursiva final");
+	scanf("%d",&valorfinal);
+	printf("Resultado del no final: %f\n", f_aureof(valorfinal,1));
+
+	printf("Introduzca el valor para la funcion iterativa");
+	scanf("%d",&valoriterativo);
+	printf("Resultado del no final: %f\n", f_aureoIt(valoriterativo));
+
+	return 0;
+}
+
+ float f_aureo(int n){
+		float res;
+		if(n==0){
+			res= 1;
+		}else{
+			res=1+1/f_aureo(n-1);
+		}
+		return res;
+	}
+
+ float f_aureof(int n, float acum){
+		float res;
+		if(n==0){
+			res = acum;
+		}else{
+			res = f_aureof(n-1, 1+1/acum);
+		}
+		return res;
+	}
+	//  1 + 1/(1+1/1)
+
+ float f_aureoIt(int n){
+		float a = 1+1/1;
+		float b = 1;
+		int i = 0;
+		while(i<n){
+			b=a;
+			a = 1 + 1/a;
+			i++;
+		}
+		return b;
+	}
